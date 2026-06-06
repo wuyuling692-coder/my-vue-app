@@ -4,6 +4,7 @@
         <div>{{ age }}</div>
         <button @click="changeName">修改汽车的价格</button>
         <button @click="changeAge">修改汽车</button>
+        <button @click="changeAge">修改汽车2</button>
         
     </div>
     
