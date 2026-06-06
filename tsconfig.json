@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "public/备份/Person computed.vue", "public/备份/watch第一种方法.vue"  ],
   "exclude": [
     "node_modules"
   ]
