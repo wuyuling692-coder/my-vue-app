@@ -1,37 +1,43 @@
 <template>
     <div class="person">
-        <div>{{ name }}</div>
-        <div>{{ age }}</div>
-        <button @click="changeName">修改汽车的价格</button>
-        <button @click="changeAge">修改汽车</button>
-        <button @click="changeAge">修改汽车2</button>
+        <div>{{ fullname }}</div>
+        
+        <button @click="changeFullName">修改名字</button>
         
     </div>
     
 </template>
 
 <script lang="ts">
-import { reactive,toRefs } from 'vue'
+import { ref,computed } from 'vue'
 
 export default {
     name: 'Person',
     setup() {
-        let person=reactive({
-            name:'张三',
-            age:18
+        let person=ref({
         })
 
-        let{name,age}=toRefs(person)
+        let firstname=ref('xing')
+        let lastname=ref('mei')
         
 
-        function changeName() {
-            name.value += '~'
+        let fullname=computed({
+            get(){
+                return firstname.value+'-'+lastname.value
+            },
+            set(value:string){
+                const [first, last] = value.split('-')
+                firstname.value = first
+                lastname.value = last
+            }
         }
-        function changeAge(){
-            age.value += 1
+      
+        )
+        function changeFullName(){
+            fullname.value ='ha-ha'
         }
     
-        return { name,age,changeName,changeAge }
+        return {firstname,lastname,fullname,changeFullName }
     }
 }
 </script>
