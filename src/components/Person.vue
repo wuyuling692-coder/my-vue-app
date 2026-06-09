@@ -1,17 +1,30 @@
 <template>
     <div class="person">
-                   
-    </div>   
+         <ul>
+            <li v-for="item in list" :key="item.id">
+                {{ item.name }}--{{ item.age }}
+            </li>
+         </ul>
+    </div>
 </template>
 
 <script lang="ts" setup name="Person">
-    import { type PersonInter, type Persons } from '@/types';
+    import { type Persons } from '@/types';
 
-    let PersonList :Persons = [
-        {id:'asyud7asfd01',name:'王一',age:18},
-        {id:'asyud7asfd02',name:'王三',age:17},
-        {id:'asyud7asfd03',name:'王五',age:88}
-    ]
+    // 只接收list
+    // const props = defineProps(['list'])
+    // const personlist = props.list
+    // console.log( personlist)
+
+    // 只接收list+限制类型
+    // const props=defineProps<{list:Persons}>()
+    // const personlist = props.list
+    // console.log( personlist)
+
+    // 接收list+限制类型+限制必要性+指定默认值
+    withDefaults(defineProps<{list?:Persons}>(),{
+        list:()=>[{id:'ad05',name:"康师傅",age:8}]
+    })
 
 </script>
 
